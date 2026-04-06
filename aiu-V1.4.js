@@ -394,6 +394,9 @@ function initLogoRevealLoader() {
 }
 
 function initMegaNavDirectionalHover() {
+
+  // TODO add close mobile nav menu call on mobile link click/tap event
+
   const DUR = {
     bgMorph: 0.4,
     contentIn: 0.3,
@@ -778,6 +781,7 @@ function initMegaNavDirectionalHover() {
     state.mobileTl = tl;
     tl.add(animateBurger(true), 0);
     tl.to(navList, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
+    tl.to(navBg, { height: navList.getBoundingClientRect().height + navBar.getBoundingClientRect().height, duration: 0.3, ease: "power2.out" }, 0); // todo expand background
     if (items.length) {
       tl.fromTo(items,
         { autoAlpha: 0, y: 12 },
@@ -820,6 +824,7 @@ function initMegaNavDirectionalHover() {
 
     // Fade out the nav list container
     tl.to(navList, { autoAlpha: 0, duration: 0.3, ease: "power2.inOut" }, 0.05);
+    tl.to(navBg, { height: navBar.getBoundingClientRect().height, duration: 0.3, ease: "power2.out" }, 0.05); // todo contract background
   }
 
   // MOBILE — slide-over panels 
