@@ -429,6 +429,8 @@ function initMegaNavDirectionalHover() {
   );
 
   const navBar = document.querySelector("[data-mega-nav-bar]");
+  // data-home-hero-content-wrap
+  const homeHeroContent = document.querySelector("[data-home-hero-content-wrap]");
 
   if (!menuWrap) {
     if (DEBUG) console.warn("MegaNav: Missing [data-menu-wrap] element");
@@ -774,6 +776,8 @@ function initMegaNavDirectionalHover() {
     burger.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
 
+    // data-home-hero-content-wrap
+    gsap.set(homeHeroContent, { position: "fixed" });
     lenis.stop();
 
     const items = getNavItems();
@@ -803,6 +807,8 @@ function initMegaNavDirectionalHover() {
     state.mobilePanelActive = null;
     burger.setAttribute("aria-expanded", "false");
 
+    // data-home-hero-content-wrap
+    gsap.set(homeHeroContent, { position: "sticky" });
     lenis.start();
 
     const tl = gsap.timeline({
