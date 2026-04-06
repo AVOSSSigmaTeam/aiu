@@ -911,6 +911,7 @@ function initMegaNavDirectionalHover() {
     const w = window.innerWidth;
     if (w === lastWidth) return;
     lastWidth = w;
+    gsap.set(navBg, { height: (navBar.getBoundingClientRect().height) });
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       const was = state.isMobile;
