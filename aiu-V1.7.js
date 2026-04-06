@@ -786,7 +786,9 @@ function initMegaNavDirectionalHover() {
     tl.add(animateBurger(true), 0);
     tl.to(navList, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
     // tl.to(navBg, { height: navList.getBoundingClientRect().height + navBar.getBoundingClientRect().height, duration: 0.3, ease: "power2.out" }, 0); // todo expand background
-    tl.to(navBg, { height: navList.getBoundingClientRect().height + navBar.getBoundingClientRect().height - ((navBg.style.borderRadius ? parseInt(navBg.style.borderRadius) : 0) / 2), duration: 0.3, ease: "power2.out" }, 0); // todo expand background
+    let bottomOffset = (menuWrap.style.top ? parseInt(menuWrap.style.top) : 0) * 2;
+    if (DEBUG) console.log("bottomOffset:", bottomOffset);
+    tl.to(navBg, { height: navList.getBoundingClientRect().height + navBar.getBoundingClientRect().height - bottomOffset, duration: 0.3, ease: "power2.out" }, 0); // todo expand background
     if (items.length) {
       tl.fromTo(items,
         { autoAlpha: 0, y: 12 },
