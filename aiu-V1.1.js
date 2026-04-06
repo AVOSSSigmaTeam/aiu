@@ -425,6 +425,8 @@ function initMegaNavDirectionalHover() {
     (id) => document.querySelector(`[data-burger-line='${id}']`)
   );
 
+  const navBar = document.querySelector("[data-mega-nav-bar]");
+
   if (!menuWrap) {
     if (DEBUG) console.warn("MegaNav: Missing [data-menu-wrap] element");
     return;
@@ -452,7 +454,7 @@ function initMegaNavDirectionalHover() {
   const getNavItems = () => navList.querySelectorAll("[data-nav-list-item]");
   const getIndex = (name) => toggles.indexOf(getToggle(name));
   const stagger = (n) => (n <= 1 ? 0 : { amount: DUR.stagger });
-  const navHeight = navBg.getBoundingClientRect().height;
+  // const navHeight = navBar.getBoundingClientRect().height; // todo make resposive to viewport changes
 
   function clearTimers() {
     clearTimeout(state.hoverTimer);
@@ -493,7 +495,8 @@ function initMegaNavDirectionalHover() {
       gsap.set(getFade(p), { autoAlpha: 0, x: 0, y: 0 });
     });
     gsap.set(dropContainer, { height: 0 });
-    gsap.set(navBg, { height: navHeight });
+    // gsap.set(navBg, { height: navHeight });
+    gsap.set(navBg, { height: (navBar.getBoundingClientRect().height) });
     gsap.set(backdrop, { autoAlpha: 0 });
     menuWrap.setAttribute("data-menu-open", "false");
     resetToggles();
@@ -551,7 +554,8 @@ function initMegaNavDirectionalHover() {
     state.tl = tl;
     tl.to(backdrop, { autoAlpha: 1, duration: DUR.backdropIn, ease: "power2.out" }, 0);
     tl.to(dropContainer, { height, duration: DUR.openScale, ease: "power3.out" }, 0);
-    tl.to(navBg, { height: height + navHeight, duration: DUR.openScale, ease: "power3.out" }, 0);
+    // tl.to(navBg, { height: height + navHeight, duration: DUR.openScale, ease: "power3.out" }, 0);
+    tl.to(navBg, { height: height + navBar.getBoundingClientRect().height, duration: DUR.openScale, ease: "power3.out" }, 0);
     tl.set(el, { visibility: "visible", opacity: 1, pointerEvents: "auto" }, 0.05);
     if (fade.length) {
       tl.fromTo(fade,
@@ -582,7 +586,8 @@ function initMegaNavDirectionalHover() {
     state.tl = tl;
     if (fade.length) tl.to(fade, { autoAlpha: 0, y: -4, duration: DUR.contentOut * 0.7, ease: "power2.in" }, 0);
     tl.to(dropContainer, { height: 0, duration: DUR.closeScale, ease: "power2.in" }, 0.05);
-    tl.to(navBg, { height: navHeight, duration: DUR.closeScale, ease: "power2.in" }, 0.05);
+    // tl.to(navBg, { height: navHeight, duration: DUR.closeScale, ease: "power2.in" }, 0.05);
+    tl.to(navBg, { height: navBar.getBoundingClientRect().height, duration: DUR.closeScale, ease: "power2.in" }, 0.05);
     tl.to(backdrop, { autoAlpha: 0, duration: DUR.backdropOut, ease: "power2.out" }, 0);
     if (el) tl.set(el, { visibility: "hidden", opacity: 0, pointerEvents: "none" });
   }
@@ -622,7 +627,8 @@ function initMegaNavDirectionalHover() {
     tl.set(fromEl, { visibility: "hidden", opacity: 0, pointerEvents: "none", xPercent: 0 }, DUR.contentOut);
     if (fromFade.length) tl.set(fromFade, { x: 0 }, DUR.contentOut);
     tl.to(dropContainer, { height: toHeight, duration: DUR.bgMorph, ease: "power3.out" }, 0.05);
-    tl.to(navBg, { height: toHeight + navHeight, duration: DUR.bgMorph, ease: "power3.out" }, 0.05);
+    // tl.to(navBg, { height: toHeight + navHeight, duration: DUR.bgMorph, ease: "power3.out" }, 0.05);
+    tl.to(navBg, { height: toHeight + navBar.getBoundingClientRect().height, duration: DUR.bgMorph, ease: "power3.out" }, 0.05);
     tl.set(toEl, { visibility: "visible", opacity: 1, pointerEvents: "auto", xPercent: 0 }, DUR.contentOut * 0.5);
     if (toFade.length) {
       tl.fromTo(toFade,
