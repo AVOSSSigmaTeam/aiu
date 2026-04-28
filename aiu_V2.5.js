@@ -670,17 +670,11 @@ function initFaqItemAnimation(page) {
     const faqItems = wrap.querySelectorAll("[data-faq-item]");
     if (!faqItems.length) return;
 
-    let itemNumber = 1; // each faq wrap on page will start numbering from 1
-
     faqItems.forEach((item) => {
       const question = item.querySelector("[data-faq-question]");
       const answer = item.querySelector("[data-faq-answer]");
       const openIndicator = item.querySelector("[data-faq-open-indicator]");
-      const faqItemNumber = item.querySelector("[data-faq-item-number]");
-      if (!question || !answer || !openIndicator || !faqItemNumber) return;
-
-      faqItemNumber.textContent = itemNumber;
-      itemNumber++;
+      if (!question || !answer || !openIndicator) return;
 
       const tl = gsap.timeline({ paused: true });
 
