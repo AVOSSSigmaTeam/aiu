@@ -70,7 +70,8 @@ function initAfterEnterFunctions(next) {
   switch (pageName) {
     case "home":
       initHomeHeroSectionAnimation(nextPage);
-      initMarqueeScrollDirection(nextPage);
+      // initMarqueeScrollDirection(nextPage);
+      initLogoMarquee();
       initFaqItemAnimation(nextPage);
       break;
     case "blog":
