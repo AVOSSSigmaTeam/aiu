@@ -518,6 +518,22 @@ function formatDates() {
   });
 }
 
+function initLogoMarquee() {
+  const marqueeWraps = document.querySelectorAll("[data-logo-marquee-wrap]");
+  if (!marqueeWraps.length) return;
+
+  marqueeWraps.forEach(wrap => {
+    const marquee = wrap.querySelector("[data-logo-marquee]");
+    if (!marquee) return;
+    gsap.to(marquee, {
+      xPercent: -100,
+      repeat: -1,
+      duration: 20,
+      ease: "linear"
+    });
+  });
+}
+
 function initMarqueeScrollDirection(page) {
   page.querySelectorAll('[data-marquee-scroll-direction-target]').forEach((marquee) => {
     // Query marquee elements
