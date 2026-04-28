@@ -39,7 +39,6 @@ function initOnceFunctions() {
 
   initLogoRevealLoader();
 
-  initMegaNavDirectionalHover();
 
   initfaviconAlert();
 
@@ -66,8 +65,6 @@ function initAfterEnterFunctions(next) {
   }
 
   initCopyrightYear();
-
-  initScrollProgressBar();
 
   const pageName = nextPage.getAttribute("data-page-name") || '';
   switch (pageName) {
