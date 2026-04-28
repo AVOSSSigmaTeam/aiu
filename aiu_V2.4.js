@@ -524,13 +524,16 @@ function initLogoMarquee() {
   if (!marqueeWraps.length) return;
 
   marqueeWraps.forEach(wrap => {
-    const marquee = wrap.querySelector("[data-logo-marquee]");
-    if (!marquee) return;
-    gsap.to(marquee, {
-      xPercent: -100,
-      repeat: -1,
-      duration: 20,
-      ease: "linear"
+    const marquees = wrap.querySelectorAll("[data-logo-marquee]");
+    if (!marquees.length) return;
+
+    marquees.forEach(marquee => {
+      gsap.to(marquee, {
+        xPercent: -100,
+        repeat: -1,
+        duration: 20,
+        ease: "linear"
+      });
     });
   });
 }
